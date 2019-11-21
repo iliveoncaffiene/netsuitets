@@ -4,7 +4,7 @@
  */
 define(["require", "exports", "N/http", "N/log"], function (require, exports, http, log) {
     Object.defineProperty(exports, "__esModule", { value: true });
-    function sendProductData(context) {
+    exports.afterSubmit = function sendProductData(context) {
         var addressListId = "addressbook";
         var prodNewRecord = context.newRecord;
         var addresses = getSublistObjects(prodNewRecord, addressListId);
@@ -34,7 +34,7 @@ define(["require", "exports", "N/http", "N/log"], function (require, exports, ht
         catch (er02) {
             log.error('ERROR', JSON.stringify(er02));
         }
-    }
+    };
     function getSublistObjects(record, sublistId) {
         var subListFields = record.getSublistFields({ sublistId: sublistId });
         var rowCount = record.getLineCount({ sublistId: sublistId });
@@ -53,5 +53,4 @@ define(["require", "exports", "N/http", "N/log"], function (require, exports, ht
         }
         return list;
     }
-    exports.afterSubmit = sendProductData;
 });

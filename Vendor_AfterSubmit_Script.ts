@@ -7,7 +7,7 @@ import * as http from 'N/http'
 import * as record from 'N/record'
 import * as log from 'N/log';
 import { EntryPoints } from 'N/types';
-function sendProductData(context: EntryPoints.UserEvent.afterSubmitContext) {
+export var afterSubmit: EntryPoints.UserEvent.afterSubmit = function sendProductData(context: EntryPoints.UserEvent.afterSubmitContext) {
     const addressListId = "addressbook";
     var prodNewRecord = context.newRecord;
     var addresses = getSublistObjects(prodNewRecord, addressListId);
@@ -61,5 +61,3 @@ function getSublistObjects(record: record.Record, sublistId: string) {
 
     return list;
 }
-
-export var afterSubmit: EntryPoints.UserEvent.afterSubmit = sendProductData;
